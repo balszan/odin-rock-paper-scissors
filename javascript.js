@@ -7,32 +7,59 @@ function getComputerChoice() {
 function singleRound (playerSelection, computerSelection) {
     if(playerSelection.toLowerCase() == "paper") {
         if(computerSelection=="rock") {
-            return "You win! Paper beats rock!";
+            console.log("You win! Paper beats rock!");
+            return true;
         } else if(computerSelection=="paper") {
-            return "Oopsie! Nobody wins. Try again?"
+            console.log("Oopsie! Nobody wins. Try again?");
+            return false;
         } else if(computerSelection=="scissors") {
-            return "You lose! Scissors beat paper!";
+            console.log("You lose! Scissors beat paper!");
+            return false;
         }
     } else if(playerSelection.toLowerCase() == "rock") {
         if(computerSelection=="rock") {
-            return "Oopsie! Nobody wins. Try again?";
+            console.log("Oopsie! Nobody wins. Try again?");
+            return false;
         } else if(computerSelection=="paper") {
-            return "You lose! Paper beats rock!"
+            console.log("You lose! Paper beats rock!");
+            return false;
         } else if(computerSelection=="scissors") {
-            return "You win! Rock beats scissors!";
+            console.log("You win! Rock beats scissors!");
+            return true;
         }
     } else if(playerSelection.toLowerCase() == "scissors") {
             if(computerSelection=="rock") {
-                return "You lose! Rock beats scissors!";
+                console.log("You lose! Rock beats scissors!");
+                return false;
             } else if(computerSelection=="paper") {
-                return "You win! Scissors beat paper!"
+                console.log("You win! Scissors beat paper!");
+                return true;
             } else if(computerSelection=="scissors") {
-            return "Oopsie! Nobody wins. Try again?";
+                console.log("Oopsie! Nobody wins. Try again?");
+                return false;
             }
     }
 }
 
 
-let playerSelection = prompt("Paper, rock or scissors?");
-let computerSelection = getComputerChoice();
-console.log(singleRound(playerSelection,computerSelection));
+function game() {
+        let playerWins = 0;
+
+    for (let i=0; i<5; i++) {
+        let playerSelection = prompt("Paper, rock or scissors?");
+        let computerSelection = getComputerChoice();
+        let singleGame = singleRound(playerSelection,computerSelection);
+        if(singleGame==true) {
+            playerWins++;
+        } 
+        
+    }
+    if(playerWins>=3) {
+        console.log("YOU WON THE GAME!");
+    } else {
+        console.log("You lost the game.");
+    }
+}
+
+
+game();
