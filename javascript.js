@@ -1,3 +1,5 @@
+
+
 function getComputerChoice() {
     let options = ['rock','paper','scissors'];
     let choice = options[Math.floor(Math.random()*options.length)];
@@ -5,7 +7,7 @@ function getComputerChoice() {
 }
 
 function singleRound (playerSelection, computerSelection) {
-    if(playerSelection.toLowerCase() == "paper") {
+    if(playerSelection == "paper") {
         if(computerSelection=="rock") {
             console.log("You win! Paper beats rock!");
             return true;
@@ -16,7 +18,7 @@ function singleRound (playerSelection, computerSelection) {
             console.log("You lose! Scissors beat paper!");
             return false;
         }
-    } else if(playerSelection.toLowerCase() == "rock") {
+    } else if(playerSelection == "rock") {
         if(computerSelection=="rock") {
             console.log("Oopsie! Nobody wins. Try again?");
             return false;
@@ -27,7 +29,7 @@ function singleRound (playerSelection, computerSelection) {
             console.log("You win! Rock beats scissors!");
             return true;
         }
-    } else if(playerSelection.toLowerCase() == "scissors") {
+    } else if(playerSelection == "scissors") {
             if(computerSelection=="rock") {
                 console.log("You lose! Rock beats scissors!");
                 return false;
@@ -42,7 +44,31 @@ function singleRound (playerSelection, computerSelection) {
 }
 
 
-function game() {
+const computerChoice = getComputerChoice();
+
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+
+
+
+rock.addEventListener('click', () => {
+    console.log('The computer chose ' + computerChoice);
+    const result = singleRound('rock', computerChoice);
+});
+
+paper.addEventListener('click', () => {
+    console.log('The computer chose ' + computerChoice);
+    const result = singleRound('paper', computerChoice);
+});
+
+scissors.addEventListener('click', () => {
+    console.log('The computer chose ' + computerChoice);
+    const result = singleRound('scissors', computerChoice);
+});
+
+
+/*function game() {
         let playerWins = 0;
 
     for (let i=0; i<5; i++) {
@@ -62,4 +88,4 @@ function game() {
 }
 
 
-game();
+game();*/
